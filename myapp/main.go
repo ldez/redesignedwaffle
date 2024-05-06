@@ -7,6 +7,8 @@ import (
 
 func main() {
 	fmt.Println("Hello")
+	bar("a")
+	fmt.Println("Hello")
 	foo("a")
 }
 
@@ -16,4 +18,12 @@ func foo(a string) error {
 	}
 
 	return errors.New("OOPS")
+}
+
+func bar(b string) error {
+	if b == "b" {
+		return nil
+	}
+
+	return errors.New("OOPS I did it again")
 }
