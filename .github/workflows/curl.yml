@@ -2,8 +2,6 @@ name: Testing env
 
 on:
   push:
-    branches:
-      - temp # just to disable the workflow
 
 defaults:
   run:
@@ -23,6 +21,10 @@ jobs:
         with:
           go-version: stable
 
+      - run: |
+          echo "::remove-matcher owner=golangci-lint-action::"
+          echo "::remove-matcher owner=golangci-lint-colored-line-number::"
+
       - name: Install golangci-lint ${{ env.GOLANGCI_LINT_VERSION }}
         run: |
           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin ${GOLANGCI_LINT_VERSION}
@@ -30,3 +32,7 @@ jobs:
 
       - name: Run golangci-lint ${{ env.GOLANGCI_LINT_VERSION }}
         run: golangci-lint run --path-prefix=myapp
+
+      - run: |
+          echo "::remove-matcher owner=golangci-lint-action::"
+          echo "::remove-matcher owner=golangci-lint-colored-line-number::"
