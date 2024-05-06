@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: stable
-      - uses: golangci/golangci-lint-action@3e73387f99e37887967a54cad4d98dd8ea791352
+      - uses: golangci/golangci-lint-action@00eed6ccbb36d4afc23eaeea798043e65f5e44de
         with:
           version: v1.57
           working-directory: myapp
