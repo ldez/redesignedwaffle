@@ -21,10 +21,10 @@ jobs:
         with:
           go-version: stable
 
-      - run: |
-          echo "::remove-matcher owner=go::"
-          echo "::remove-matcher owner=golangci-lint-action::"
-          echo "::remove-matcher owner=golangci-lint-colored-line-number::"
+#      - run: |
+#          echo "::remove-matcher owner=go::"
+#          echo "::remove-matcher owner=golangci-lint-action::"
+#          echo "::remove-matcher owner=golangci-lint-colored-line-number::"
 
       - name: Install golangci-lint ${{ env.GOLANGCI_LINT_VERSION }}
         run: |
@@ -34,7 +34,7 @@ jobs:
       - name: Run golangci-lint ${{ env.GOLANGCI_LINT_VERSION }}
         run: golangci-lint run --path-prefix=myapp
 
-      - run: |
-          echo "::remove-matcher owner=go::"
-          echo "::remove-matcher owner=golangci-lint-action::"
-          echo "::remove-matcher owner=golangci-lint-colored-line-number::"
+#      - run: |
+#          echo "::remove-matcher owner=go::"
+#          echo "::remove-matcher owner=golangci-lint-action::"
+#          echo "::remove-matcher owner=golangci-lint-colored-line-number::"
