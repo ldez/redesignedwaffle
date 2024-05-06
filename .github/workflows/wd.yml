@@ -23,4 +23,4 @@ jobs:
           version: 37c3a18f078536a55bdcc71aae75f55591ca6431
           install-mode: 'goinstall'
           working-directory: myapp
-          annotations: false
+          annotations: true
