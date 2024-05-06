@@ -1,0 +1,27 @@
+name: Testing env
+
+on:
+  push:
+    branches:
+      - temp # just to disable the workflow
+
+defaults:
+  run:
+    working-directory: myapp
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - uses: golangci/golangci-lint-action@2174c57362d95372f3377832be1459e2b598e80f
+        with:
+          version: v1.58
+          working-directory: myapp
+          annotations: false
