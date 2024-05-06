@@ -22,5 +22,5 @@ jobs:
           go-version: stable
       - run: docker run --rm -v $(pwd):/app -w /app golangci/golangci-lint:v1.58.0 golangci-lint run --out-format=github-actions
         env:
-            ACTIONS_STEP_DEBUG: true
+            GOLANGCI_LINT_SKIP_GHA_PM_INSTALL: true
         working-directory: myapp
