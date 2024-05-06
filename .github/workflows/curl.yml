@@ -22,6 +22,7 @@ jobs:
           go-version: stable
 
       - run: |
+          echo "::remove-matcher owner=go::"
           echo "::remove-matcher owner=golangci-lint-action::"
           echo "::remove-matcher owner=golangci-lint-colored-line-number::"
 
@@ -34,5 +35,6 @@ jobs:
         run: golangci-lint run --path-prefix=myapp
 
       - run: |
+          echo "::remove-matcher owner=go::"
           echo "::remove-matcher owner=golangci-lint-action::"
           echo "::remove-matcher owner=golangci-lint-colored-line-number::"
