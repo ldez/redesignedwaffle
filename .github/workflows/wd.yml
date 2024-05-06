@@ -2,8 +2,6 @@ name: Testing env
 
 on:
   push:
-    branches:
-      - temp # just to disable the workflow
 
 defaults:
   run:
@@ -20,8 +18,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: stable
-      - uses: golangci/golangci-lint-action@3ceaf4f5c7d8f161dbddc723afe50bba9ca29fa5
+      - uses: golangci/golangci-lint-action@b556f25b3c7399b6dad72f47062098ff1b36e060
         with:
           version: v1.57
           working-directory: myapp
-#          annotations: false
