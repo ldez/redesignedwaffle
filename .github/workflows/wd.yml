@@ -21,6 +21,5 @@ jobs:
       - uses: golangci/golangci-lint-action@533e49f5e2366a9e5d943497c006a8de3dc81ff4
         with:
           version: v1.58
-          install-mode: 'goinstall'
           working-directory: myapp
           annotations: true
