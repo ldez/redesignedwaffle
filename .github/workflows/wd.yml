@@ -22,4 +22,4 @@ jobs:
         with:
           version: v1.58
           working-directory: myapp
-          annotations: true
+          annotations: false
