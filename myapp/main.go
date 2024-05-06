@@ -7,9 +7,9 @@ import (
 
 func main() {
 	fmt.Println("Hello")
-	foo("a")
-	fmt.Println("Hello")
 	bar("a")
+	fmt.Println("Hello")
+	foo("a")
 }
 
 func foo(a string) error {
