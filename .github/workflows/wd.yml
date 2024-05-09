@@ -18,7 +18,8 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: stable
-      - run: git pull --unshallow
+#      - run: git pull --unshallow
+      - run: git pull --deepen=100
       - run: git log --graph --pretty=tformat:'%Cred%h%Creset %Cblue%G?%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset' --branches --remotes
 
 #      - uses: golangci/golangci-lint-action@b556f25b3c7399b6dad72f47062098ff1b36e060
