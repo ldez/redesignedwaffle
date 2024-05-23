@@ -18,3 +18,4 @@ jobs:
         with:
           version: v1.58
           working-directory: myapp
+          only-new-issues: true
