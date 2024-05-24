@@ -3,6 +3,9 @@ package main
 import (
 	"errors"
 	"fmt"
+
+	"golang.org/x/exp/maps"
+	"gopkg.in/yaml.v3"
 )
 
 func main() {
@@ -26,4 +29,10 @@ func bar(b string) error {
 	}
 
 	return errors.New("OOPS I did it again")
+}
+
+func Boo() {
+	yaml.Marshal(nil)
+	d := make(map[string]int)
+	maps.Keys(d)
 }
