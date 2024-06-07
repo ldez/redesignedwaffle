@@ -12,5 +12,5 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - run: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "./temp-golangci-lint" latest
-      - run: curl -sSfL https://raw.githubusercontent.com/golangci/misspell/master/install-misspell.sh | sh -s -- -b "./temp-misspell" latest
+      - run: curl -SfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "./temp-golangci-lint" v1.59.0
+      - run: curl -SfL https://raw.githubusercontent.com/golangci/misspell/master/install-misspell.sh | sh -s -- -b "./temp-misspell" v0.5.2
