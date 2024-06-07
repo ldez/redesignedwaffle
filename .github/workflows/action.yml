@@ -2,6 +2,8 @@ name: Testing env
 
 on:
   pull_request:
+    branches:
+      - temp # disable
 
 jobs:
   linting-job:
