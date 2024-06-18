@@ -1,0 +1,49 @@
+name: Testing env
+
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repository:
+          - org: golangci
+            repo: golangci-lint
+          - org: goreleaser
+            repo: goreleaser
+    steps:
+      - name: step 1 ${{ matrix.repository.repo }}
+        id: step1
+        run: |
+          mkdir -p /tmp/outputs/${{ matrix.repository.repo }}
+          echo "## HELLO ${{ matrix.repository.repo }}" >> /tmp/outputs/${{ matrix.repository.repo }}/hello.txt
+          echo "hello ${{ matrix.repository.repo }} " >> /tmp/outputs/${{ matrix.repository.repo }}/hello.txt
+      - id: step2
+        run: |
+          mkdir -p /tmp/outputs/${{ matrix.repository.repo }}
+          echo "## WORLD ${{ matrix.repository.repo }}" >> /tmp/outputs/${{ matrix.repository.repo }}/world.txt
+          echo "world ${{ matrix.repository.repo }}" >> /tmp/outputs/${{ matrix.repository.repo }}/world.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: outputs-${{ matrix.repository.repo }}
+          path: /tmp/outputs/**/*.txt
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Load outputs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: outputs-*
+          path: /tmp/outputs/
+
+      - run: |
+          cat /tmp/outputs/**/**/*.txt > full.md
+          echo HERE
+          cat full.md
