@@ -1,5 +1,7 @@
 name: Testing env (workflow_dispatch)
 
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onworkflow_dispatch
+
 on:
   workflow_dispatch:
     inputs:
@@ -40,3 +42,11 @@ jobs:
         run: echo  The logLevel is ${{ inputs.logLevel }}
       - name: Print the input value to STDOUT
         run: echo  The value is ${{ inputs.value }}
+      - name: Print the input value compare
+        run: echo  The value is ${{ inputs.value > 123 }} or ${{ inputs.value > 234 }}
+      - name: Print the input value compare
+        run: echo  The value is ${{ fromJSON(inputs.value) > 123 }} or ${{ fromJSON(inputs.value) > 234 }}
+      - name: 'Print the input data'
+        run: echo 'Inputs are ${{ toJSON(inputs) }}'
+      - name: 'Print the github.event.inputs data'
+        run: echo 'Inputs are ${{ toJSON(github.event.inputs) }}'
