@@ -50,3 +50,17 @@ jobs:
         run: echo 'Inputs are ${{ toJSON(inputs) }}'
       - name: 'Print the github.event.inputs data'
         run: echo 'Inputs are ${{ toJSON(github.event.inputs) }}'
+      - run: echo 'foo' > foo.txt
+      - run: echo 'bar' > bar.txt
+      - run: touch foobar.md
+      - run: |
+          cat *.txt
+          if test "$( cat foobar.md | wc -c )" -gt 2
+          then
+            echo "here foobar"
+          fi
+          if test "$( cat foo.txt | wc -c )" -gt 2
+          then
+            echo "here foo"
+          fi
+          echo "THIS IS THE END"
