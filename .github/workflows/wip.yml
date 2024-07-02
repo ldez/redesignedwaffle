@@ -1,0 +1,13 @@
+name: Testing env (ENV)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print-tag:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: env
